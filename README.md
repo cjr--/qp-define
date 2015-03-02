@@ -2,6 +2,11 @@
 
 `> npm install qp-define --save`
 
+or
+
+`<script src="qp-define.js"></script>`
+
+
 require `qp-define` to introduce a global define function.
 
 ````
