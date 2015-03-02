@@ -1,44 +1,15 @@
-### example 1
-````
-define(module, function(exports) {
-  
-  exports('my-module', {
-    
-  });
-  
-});
-````
+### qp-define
 
-### example 2
+`> npm install qp-define --save`
+
+require `qp-define` to introduce a global define function.
+
 ````
 define(module, function(exports, require, library) {
-  
-  var fs = require('fs');
-  var qp = library('qp-library');
-  
-  exports('my-module', qp.make({
 
-    mixin: ['events'],
-    
-    self: {
-    
-      properties: {
-        // static properties
-      },
-      
-      // static ctor
-      init: function() { }
-      
-    },
-    
-    properties: {
-      // instance properties
-    },
-    
-    // instance ctor
-    init: function(config) { }
-  
-  }));
-  
+  exports('my-module', {
+
+  });
+
 });
 ````
