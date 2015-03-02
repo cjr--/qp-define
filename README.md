@@ -1,16 +1,17 @@
-### qp-define
+#### server
 
 `> npm install qp-define --save`
 
-or
+#### browser
 
 `<script src="qp-define.js"></script>`
 
+#### usage
 
-require `qp-define` to introduce a global define function.
+require `qp-define` to introduce a global `define` function.
 
 ````
-define(module, function(exports, require, library) {
+define(module, function(exports, require) {
 
   exports('my-module', {
 

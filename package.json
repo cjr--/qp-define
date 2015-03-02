@@ -7,10 +7,10 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CJR--/qp-define.git"
+    "url": "https://github.com/cjr--/qp-define.git"
   },
   "bugs": {
-    "url": "https://github.com/CJR--/qp-define/issues"
+    "url": "https://github.com/cjr--/qp-define/issues"
   },
-  "homepage": "https://github.com/CJR--/qp-define"
+  "homepage": "https://github.com/cjr--/qp-define"
 }
