@@ -1,5 +1,5 @@
 var path = require('path');
-var __library = path.join(__dirname, '..', 'library');
+var __library = path.join(__dirname, '..', '..', 'library');
 
 global.define = function define(_module, definition) {
   definition.call(global, function(id, exported) {
