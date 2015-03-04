@@ -14,3 +14,5 @@ global.define = function define(_module, definition) {
 global.define.configure = function(library_path) {
   __library = path.join(__dirname, library_path);
 };
+
+module.exports = global.define;
