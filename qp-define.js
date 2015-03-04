@@ -15,7 +15,7 @@
   global.define = function define(na, definition) {
     definition.call(global, function(id, exported) {
       _module.require.cache[id] = exported;
-    }, _module.require, _module.require);
+    }, _module.require, _module.require, _module.require);
   };
 
 })(this);

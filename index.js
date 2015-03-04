@@ -6,6 +6,8 @@ global.define = function define(_module, definition) {
     _module.exports = exported;
   }, _module.require, function library(id) {
     return _module.require(path.join(__library, id));
+  }, function project(id) {
+    return _module.require.main.require('./' + id);
   });
 };
 

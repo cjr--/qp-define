@@ -11,7 +11,7 @@
 require `qp-define` to introduce a global `define` function.
 
 ````
-define(module, function(exports, require) {
+define(module, function(exports, require, library, project) {
 
   exports('my-module', {
 
