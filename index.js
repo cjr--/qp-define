@@ -7,11 +7,11 @@ var define = global.define = function define(_module, wrap) {
       _module.exports = assign.apply(null, __slice.call(arguments).slice(1));
     },
     function require(id) {
-      var idx = id.indexOf(':');
+      var idx = id.indexOf('::');
       if (idx > 0) {
         var dir = define.paths[id.slice(0, idx)];
         if (dir) {
-          id = path.join(dir, id.slice(idx + 1));
+          id = path.join(dir, id.slice(idx + 2));
         }
       }
       return _module.require(id);
