@@ -1,18 +1,41 @@
 var path = require('path');
-var __library = path.join(__dirname, '..', '..', 'library');
+var __slice = Array.prototype.slice;
 
-global.define = function define(_module, definition) {
-  definition.call(global, function(id, exported) {
-    _module.exports = exported;
-  }, _module.require, function library(id) {
-    return _module.require(path.join(__library, id));
-  }, function project(id) {
-    return _module.require.main.require('./' + id);
+var define = global.define = function define(_module, wrap) {
+  wrap(
+    function exports(id) {
+      _module.exports = assign.apply(null, __slice.call(arguments).slice(1));
+    },
+    function require(id) {
+      var idx = id.indexOf(':');
+      if (idx > 0) {
+        var dir = define.paths[id.slice(0, idx)];
+        if (dir) {
+          id = path.join(dir, id.slice(idx + 1));
+        }
+      }
+      return _module.require(id);
+    }
+  );
+};
+
+define.paths = {
+  project: __dirname
+};
+
+define.configure = function(config) {
+  assign(define.paths, config.paths);
+};
+
+function assign() {
+  var items = __slice.call(arguments).reverse();
+  var target = items.pop();
+  items.forEach(function(source) {
+    Object.keys(source).forEach(function(key) {
+      target[key] = source[key];
+    });
   });
-};
+  return target;
+}
 
-global.define.configure = function(library_path) {
-  __library = path.join(__dirname, library_path);
-};
-
-module.exports = global.define;
+module.exports = define;
