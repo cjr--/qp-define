@@ -1,3 +1,7 @@
+#### `qp-define`
+
+`define` modules which can be used by both client & server.
+
 #### server
 
 `> npm install qp-define --save`
@@ -10,7 +14,7 @@
 
 require `qp-define` to introduce a global `define` function.
 
-`configure` keys for other locations which contain modules you want to use.
+on the server `configure` keys for other locations which contain modules you want to use.
 ````
 define.configure({
   paths: {
