@@ -23,6 +23,8 @@ define.configure({
 })
 ````
 
+on the client ensure to include the files you need in the correct order.
+
 `define` a module and `exports` the result. `require` works in the normal way with the addition of predefined paths. predefined paths are accessed by prefixing with `keyname::moduleid`.
 ````
 define(module, function(exports, require) {
