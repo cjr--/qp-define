@@ -20,7 +20,7 @@ var define = global.define = function define(_module, wrap) {
 };
 
 define.paths = {
-  project: __dirname
+  project: path.dirname(require.main.filename)
 };
 
 define.configure = function(config) {

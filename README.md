@@ -1,7 +1,5 @@
 #### `qp-define`
 
-`define` modules which can be used by both client & server.
-
 #### server
 
 `> npm install qp-define --save`
@@ -14,29 +12,42 @@
 
 require `qp-define` to introduce a global `define` function.
 
-on the server `configure` keys for other locations which contain modules you want to use.
-````
-define.configure({
-  paths: {
-    library: '/users/cjr--/github/qp-library'
-  }
-})
-````
-
-on the client ensure to include the files you need in the correct order.
+on the server `configure` keys for other locations which contain modules you want to use. `project` is predefined as `__dirname` but can be overridden. on the client reference the files you need in the correct order.
 
 `define` a module and `exports` the result. `require` works in the normal way with the addition of predefined paths. predefined paths are accessed by prefixing with `keyname::moduleid`.
 ````
+// ./main.js
+var path = require('path');
+
+define = require('qp-define');
+define.configure({
+  paths: {
+    user: path.join(__dirname, '..', 'user_modules')
+  }
+});
+
 define(module, function(exports, require) {
 
-  var fs = require('fs');
-  var log = require('library::log');
+  var example = require('project::example');
+  example.run();
 
-  exports('my-module', {
+});
+
+````
+````
+// ./example.js
+define(module, function(exports, require) {
+
+  var os  = require('os');
+  var log = require('qp-library/log');
+
+  exports('example', {
 
     run: function() {
-      log('running example');
-      log('exists', fs.stat(define.path.library));
+      log.clear();
+      log('example:');
+      log('memory:', os.totalmem());
+      log.dir(define.paths);
     }
 
   });
