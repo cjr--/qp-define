@@ -13,14 +13,15 @@
 
   _module.require.cache = {};
 
+  global.module = global.module || _module;
   global.define = function define(na, wrap) {
     wrap(
       function exports(id) {
         var args = __slice.call(arguments);
         if (args.length === 2) {
           _module.require.cache[id] = args[1];
-        } else if (args.length === 3 && typeof args[2] === 'object' && typeof args[2] === 'function') {
-          _module.require.cache[id] = args[2].call(null, split_id(id).ns, args[1]);
+        } else if (args.length === 3 && typeof args[1] === 'object' && typeof args[2] === 'function') {
+          _module.require.cache[id] = args[2].call(null, id, args[1]);
         } else {
           _module.require.cache[id] = assign.apply(null, args.slice(1));
         }
@@ -43,16 +44,6 @@
       }
     }
     return target;
-  }
-
-  function split_id(id) {
-    var idx = id.indexOf('::');
-    var key, ns;
-    if (idx > 0) {
-      key = id.slice(0, idx);
-      ns = id.slice(idx + 2);
-    }
-    return { id: id, ns: ns || id, key: key, dir: undefined, filename: undefined };
   }
 
 })(this);

@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/cjr--/qp-define/issues"
   },
-  "homepage": "https://github.com/cjr--/qp-define"
+  "homepage": "https://github.com/cjr--/qp-define",
+  "devDependencies": {
+    "uglify-js": "2.x"
+  }
 }
