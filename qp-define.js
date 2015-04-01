@@ -16,14 +16,14 @@
   global.module = global.module || _module;
   global.define = function define(na, wrap) {
     wrap(
-      function exports(id) {
+      function exports() {
         var args = __slice.call(arguments);
         if (args.length === 2) {
-          _module.require.cache[id] = args[1];
+          _module.require.cache[args[0]] = args[1];
         } else if (args.length === 3 && typeof args[1] === 'object' && typeof args[2] === 'function') {
-          _module.require.cache[id] = args[2].call(null, id, args[1]);
+          _module.require.cache[args[0]] = args[2].call(null, args[0], args[1]);
         } else {
-          _module.require.cache[id] = assign.apply(null, args.slice(1));
+          _module.require.cache[args[0]] = assign.apply(null, args.slice(1));
         }
       },
       function require(id) {
