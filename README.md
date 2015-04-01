@@ -6,29 +6,35 @@
 
 `<script src="qp-define.min.js"></script>`
 
+#### why?
+
+- simple module system which works on both client and server
+- leaves dependency management alone
+- minimal additional syntax
+
 #### usage
 
-- require `qp-define` to introduce a global `define` function.
-
-- on the server `configure` keys for other locations which contain modules you want to use.
-
-- `local` is predefined as `path.dirname(require.main.filename)`, this is only useful for files in a node based project which
-won't be shared outside of the project. the `define.paths.local` reference is useful for referencing the local project whilst
-keeping it externally available.
-
-- on the client reference the files you need in the correct order. the references are used to namespace the exports inside an object literal
-
+- `require('qp-define')` to introduce a global `define` function.
 - `define` a module and call `exports` with the result.
+- `require` core modules in the normal way.
+- ensure modules are loaded in dependency order on the client.
 
+#### optional
+
+- on the server add keys for other locations which contain modules you want to use.
+- `local` is predefined as `path.dirname(require.main.filename)`, this is only useful for files in a node based project which
+won't be shared outside of the project. the `define.path.local` reference is useful for referencing the local project whilst
+keeping it externally available.
 - `require` works in the normal way with the addition of predefined paths. predefined paths are accessed by prefixing the path name, eg `var my_module = require('pathname/my_module')`
 
+#### example
 
 ````
 // ./main.js
 var path = require('path');
 
 define = require('qp-define');
-define.path('project_a', define.paths.local);
+define.path('project_a', define.path.local);
 define.path('user_modules', path.join(__dirname, '..', 'user_modules'));
 
 define(module, function(exports, require) {
