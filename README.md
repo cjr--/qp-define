@@ -1,4 +1,4 @@
-[![NPM version][npm-image]][npm-url]
+[![NPM version][http://img.shields.io/npm/v/qp-define.svg]][https://npmjs.org/package/qp-define]
 
 ----
 
