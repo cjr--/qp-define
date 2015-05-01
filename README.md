@@ -1,3 +1,7 @@
+[![NPM version][npm-image]][npm-url]
+
+----
+
 [![licence](https://img.shields.io/badge/licence-MIT-blue.svg?style=flat-square)](https://github.com/cjr--/qp-define/blob/master/LICENSE)  
 [![npm](https://img.shields.io/badge/npm-v1.2.2-red.svg?style=flat-square)](https://www.npmjs.com/package/qp-define)
 
