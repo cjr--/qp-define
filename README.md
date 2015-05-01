@@ -1,7 +1,7 @@
-[![GitHub license][github-licence-image]][licence-url]   
-[![NPM version][npm-image]][npm-url]   
-[![Dependency status][david-dm-image]][david-dm-url]  
-[![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]  
+[![GitHub license][github-licence-image]][licence-url]
+[![NPM version][npm-image]][npm-url]
+[![Dependency status][david-dm-image]][david-dm-url]
+[![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]
 
 #### server
 
