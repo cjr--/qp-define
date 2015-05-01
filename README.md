@@ -1,3 +1,6 @@
+[![licence](https://img.shields.io/badge/licence-MIT-blue.svg?style=flat-square)](qp-define/LICENSE)  
+[![npm](https://img.shields.io/badge/npm-v1.2.2-red.svg?style=flat-square)](https://www.npmjs.com/package/qp-define)
+
 #### server
 
 `> npm install qp-define --save`
