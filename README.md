@@ -1,7 +1,7 @@
-[![GitHub license][github-licence-image]][licence-url]
-[![NPM version][npm-image]][npm-url]
-[![Dependency status][david-dm-image]][david-dm-url]
-[![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]
+[![npm license][licence-image]][licence-url]
+[![npm version][npm-version-image]][npm-version-url]
+[![dependency status][david-dm-image]][david-dm-url]
+[![dev dependency status][david-dm-dev-image]][david-dm-dev-url]
 
 #### server
 
@@ -99,11 +99,12 @@ define(module, function(exports, require) {
 
 });
 ````
-[github-licence-image]: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square
-[licence-url]: https://github.com/cjr--/qp-define/blob/master/LICENSE
-[npm-url]: https://npmjs.org/package/qp-define
-[npm-image]: http://img.shields.io/npm/v/qp-define.svg?style=flat-square
-[david-dm-url]:https://david-dm.org/cjr--/qp-define
+[licence-image]: https://img.shields.io/npm/l/qp-define.svg?style=flat-square
+[npm-version-image]: http://img.shields.io/npm/v/qp-define.svg?style=flat-square
 [david-dm-image]:https://david-dm.org/cjr--/qp-define.svg?style=flat-square
-[david-dm-dev-url]:https://david-dm.org/cjr--/qp-define#info=devDependencies
 [david-dm-dev-image]:https://david-dm.org/cjr--/qp-define/dev-status.svg?style=flat-square
+
+[licence-url]: https://github.com/cjr--/qp-define/blob/master/LICENSE
+[npm-version-url]: https://npmjs.org/package/qp-define
+[david-dm-url]:https://david-dm.org/cjr--/qp-define
+[david-dm-dev-url]:https://david-dm.org/cjr--/qp-define#info=devDependencies
