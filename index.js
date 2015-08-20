@@ -15,6 +15,9 @@ var define = global.define = function define(_module, wrap) {
     },
     function require(id) {
       return _module.require(parse_path(id));
+    },
+    function make(id, def) {
+      _module.exports = define.make(id, def);
     }
   );
 };

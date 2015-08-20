@@ -14,7 +14,7 @@
   _module.require.cache = {};
 
   global.module = global.module || _module;
-  global.define = function define(na, wrap) {
+  var define = global.define = function define(na, wrap) {
     wrap(
       function exports() {
         var args = __slice.call(arguments);
@@ -28,6 +28,9 @@
       },
       function require(id) {
         return _module.require(id);
+      },
+      function make(id, def) {
+        _module.require.cache[id] = define.make(id, def);
       }
     );
   };
