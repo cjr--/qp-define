@@ -29,8 +29,9 @@
       function require(id) {
         return _module.require(id);
       },
-      function make(id, def) {
-        _module.require.cache[id] = define.make(id, def);
+      function make() {
+        var id = arguments[0].ns || arguments[0];
+        _module.require.cache[id] = define.make(id, arguments[1] || arguments[0]);
       }
     );
   };
