@@ -22,8 +22,8 @@ var define = global.define = function define(_module, wrap) {
   );
 };
 
-define.path = function(id, path) {
-  define.path[id] = parse_path(path);
+define.path = function(id, pathname) {
+  define.path[id] = path.normalize(parse_path(pathname));
 };
 
 define.path.local = path.dirname(require.main.filename);
