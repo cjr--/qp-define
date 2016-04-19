@@ -5,13 +5,20 @@ var define = global.define = function define(_module, wrap) {
   wrap(
     function exports() {
       var args = __slice.call(arguments);
-      if (args.length === 2) {
-        _module.exports = args[1];
+      var expo;
+      if (args.length === 1) {
+        expo = args[0];
+      } else if (args.length === 2) {
+        expo = args[1];
       } else if (args.length === 3 && typeof args[1] === 'object' && typeof args[2] === 'function') {
-        _module.exports = args[2].call(null, args[0], args[1]);
+        expo = args[2].call(null, args[0], args[1]);
       } else {
-        _module.exports = assign.apply(null, args.slice(1));
+        expo = assign.apply(null, args.slice(1));
       }
+      Object.keys(expo).forEach(function(k, v) {
+        if (typeof v === 'function') expo[k] = v.bind(expo);
+      });
+      _module.exports = expo;
     },
     function require(id) {
       return _module.require(parse_path(id));

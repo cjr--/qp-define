@@ -18,13 +18,18 @@
     wrap(
       function exports() {
         var args = __slice.call(arguments);
+        var expo;
         if (args.length === 2) {
-          _module.require.cache[args[0]] = args[1];
+          expo = args[1];
         } else if (args.length === 3 && typeof args[1] === 'object' && typeof args[2] === 'function') {
-          _module.require.cache[args[0]] = args[2].call(null, args[0], args[1]);
+          expo = args[2].call(null, args[0], args[1]);
         } else {
-          _module.require.cache[args[0]] = assign.apply(null, args.slice(1));
+          expo = assign.apply(null, args.slice(1));
         }
+        for (var key in expo) {
+          if (source.hasOwnProperty(key)) expo[key] = expo[key].bind(expo);
+        }
+        _module.require.cache[args[0]] = expo;
       },
       function require(id) {
         return _module.require(id);
