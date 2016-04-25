@@ -1,6 +1,6 @@
 (function(global) {
 
-  var __slice = Array.prototype.slice;
+  var _slice = Array.prototype.slice;
   var _module = { };
 
   _module.resolve = function(id) {
@@ -11,48 +11,43 @@
     return this.require.cache[id];
   }.bind(_module);
 
-  _module.require.cache = {};
+  _module.require.cache = { };
 
   global.module = global.module || _module;
-  var define = global.define = function define(na, wrap) {
+  global.define = function define(na, wrap) {
     wrap(
       function exports() {
-        var args = __slice.call(arguments);
-        var expo;
-        if (args.length === 2) {
-          expo = args[1];
-        } else if (args.length === 3 && typeof args[1] === 'object' && typeof args[2] === 'function') {
-          expo = args[2].call(null, args[0], args[1]);
-        } else {
-          expo = assign.apply(null, args.slice(1));
+        var args = _slice.call(arguments);
+        var _export;
+        if (args.length === 1) {
+          _export = args[0];
+        } else if (args.length > 1) {
+          _export = assign.apply(null, args);
         }
-        for (var key in expo) {
-          if (source.hasOwnProperty(key)) expo[key] = expo[key].bind(expo);
-        }
-        _module.require.cache[args[0]] = expo;
+        if (_export) return global.module.require.cache[_export.ns] = bind_all(_export);
       },
-      function require(id) {
-        return _module.require(id);
-      },
-      function make() {
-        var id = arguments[0].ns || arguments[0];
-        _module.require.cache[id] = define.make(id, arguments[1] || arguments[0]);
-      }
+      function require(id) { return global.module.require(id); },
+      function make(o) { global.module.require.cache[o.ns] = global.define.make(o); }
     );
   };
 
   function assign() {
-    var items = __slice.call(arguments).reverse();
+    var items = _slice.call(arguments).reverse();
     var target = items.pop();
     for (var i = 0, l = items.length; i < l; i++) {
       var source = items[i];
       for (var key in source) {
-        if (source.hasOwnProperty(key)) {
-          target[key] = source[key];
-        }
+        if (source.hasOwnProperty(key)) target[key] = source[key];
       }
     }
     return target;
+  }
+
+  function bind_all(o) {
+    for (var k in o) {
+      if (typeof o[k] === 'function' && o.hasOwnProperty(k)) o[k] = o[key].bind(o);
+    }
+    return o;
   }
 
 })(this);
