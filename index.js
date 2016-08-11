@@ -3,7 +3,7 @@ var _slice = Array.prototype.slice;
 
 var define = global.define = function define(_module, wrap) {
   wrap(
-    function exports() {
+    function define_exports() {
       var args = _slice.call(arguments);
       var _export;
       if (args.length === 1) {
@@ -13,13 +13,28 @@ var define = global.define = function define(_module, wrap) {
       }
       if (_export) return _module.exports = bind_all(_export);
     },
-    function require(id) { return _module.require(parse_path(id)); },
+    function define_require(id, options) {
+      if (options) {
+        id = parse_path(id);
+        var o = null;
+        if (options.safe) {
+          try { o = _module.require(id); } catch(_) { }
+        } else {
+          o = _module.require(id);
+        }
+        if (options.nocache) delete require.cache[require.resolve(id)];
+        return o;
+      } else {
+        return _module.require(parse_path(id));
+      }
+    },
     function make() { _module.exports = define.make.apply(null, arguments); }
   );
 };
 
 define.path = function(id, pathname) { define.path[id] = path.normalize(parse_path(pathname)); };
 define.path.local = path.dirname(require.main.filename);
+define.path.root = process.cwd();
 
 function assign() {
   var items = _slice.call(arguments).reverse();
