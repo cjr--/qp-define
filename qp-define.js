@@ -24,7 +24,11 @@
         } else if (args.length > 1) {
           _export = assign.apply(null, args);
         }
-        if (_export) return global.module.require.cache[_export.ns] = bind_all(_export);
+        if (_export) {
+          _export = bind_all(_export);
+          if (_export.init) _export.init();
+          return global.module.require.cache[_export.ns] = _export;
+        }
       },
       function require(id) { return global.module.require(id); },
       function make(o) { global.module.require.cache[o.ns] = global.define.make(o); }

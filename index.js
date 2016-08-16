@@ -11,7 +11,11 @@ var define = global.define = function define(_module, wrap) {
       } else if (args.length > 1) {
         _export = assign.apply(null, args);
       }
-      if (_export) return _module.exports = bind_all(_export);
+      if (_export) {
+        _export = bind_all(_export);
+        if (_export.init) _export.init();
+        return _module.exports = _export;
+      }
     },
     function define_require(id, options) {
       if (options) {
