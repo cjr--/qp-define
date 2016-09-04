@@ -101,9 +101,7 @@ define(module, function(exports, require) {
 [licence-image]: https://img.shields.io/npm/l/qp-define.svg
 [npm-version-image]: http://img.shields.io/npm/v/qp-define.svg
 [david-dm-image]:https://img.shields.io/david/cjr--/qp-define.svg
-[david-dm-dev-image]:https://img.shields.io/david/dev/cjr--/qp-define.svg
 
 [licence-url]: https://github.com/cjr--/qp-define/blob/master/LICENSE
 [npm-version-url]: https://npmjs.org/package/qp-define
 [david-dm-url]:https://david-dm.org/cjr--/qp-define
-[david-dm-dev-url]:https://david-dm.org/cjr--/qp-define#info=devDependencies
