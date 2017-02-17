@@ -49,7 +49,7 @@
 
   function bind_all(o) {
     for (var k in o) {
-      if (typeof o[k] === 'function' && o.hasOwnProperty(k)) o[k] = o[key].bind(o);
+      if (typeof o[k] === 'function' && o.hasOwnProperty(k)) o[k] = o[k].bind(o);
     }
     return o;
   }
