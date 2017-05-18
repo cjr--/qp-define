@@ -3,6 +3,14 @@
   var _slice = Array.prototype.slice;
   var _module = { };
 
+  _module.exports = function(ns, _export) {
+    if (arguments.length === 1) {
+      _export = ns;
+      ns = _export.ns;
+    }
+    return this.require.cache[ns] = _export;
+  }.bind(_module);
+
   _module.resolve = function(id) {
     return this.require.cache[id] ? id : null;
   }.bind(_module);
