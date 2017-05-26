@@ -25,8 +25,8 @@
   global.module = global.module || _module;
   global.define = function define(na, wrap) {
     wrap(
-      function exports(id, o) { return _module.require.cache[id] = o; },
-      function require(id) { return _module.require(id); }
+      function exports(id, o) { return _module.exports.apply(null, arguments); },
+      function require(id) { return _module.require.apply(null, arguments); }
     );
   };
 
