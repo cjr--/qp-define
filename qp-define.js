@@ -13,11 +13,11 @@
   }.bind(_module);
 
   _module.resolve = function(id) {
-    return this.require.cache[id] ? id : null;
+    return (this.require.cache[id] || global[id]) ? id : null;
   }.bind(_module);
 
   _module.require = function(id) {
-    return this.require.cache[id];
+    return (this.require.cache[id] || global[id] || null);
   }.bind(_module);
 
   _module.require.cache = { };
