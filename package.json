@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/cjr--/qp-define",
   "devDependencies": {
-    "uglify-js": "^3.1.9",
-    "qp-library": "*"
+    "qp-library": "*",
+    "uglify-js": "^3.10.1"
   }
 }
